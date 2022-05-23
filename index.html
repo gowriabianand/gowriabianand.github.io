@@ -139,7 +139,7 @@
     </head>
 
     <body>
-        <div class="blended_grid">
+        <div class="blended_grid w3-sand">
             <div class="w3-container w3-sand w3-text-purple w3-center">
                 <h1>Flood calls per NTA and corresponding flood prevention infrastructure</h2></div>
             <div class="w3-container w3-sand w3-left" style="width:100%">
@@ -156,7 +156,7 @@
                 <button class="w3-button w3-padding-large w3-hover-grey w3-round w3-blue" id="2019">2019</button>
                 <button class="w3-button w3-padding-large w3-hover-grey w3-round w3-blue" id="2020">2020</button>
             </div>
-            <div class="pageContent">
+            <div class="pageContent w3-sand">
                 <div id = "map"></div>
             </div>
             <div class="w3-container w3-sand w3-right" style="width:25%">
@@ -349,14 +349,14 @@
 
             info.onAdd = function () {
                 var div = L.DomUtil.create("div", "info");
-                div.innerHTML += "<h4> Welcome: This is a map of NYC NTAs colorized by 311 calls made from 2010 - 2020 </h4> <br>";
-                div.innerHTML += "<h7> On the top left are map controls that let you zoom in or zoom out (zoom level is shown between the + and -), or display the map at full <br>" +
-                    " screen. Below that is mini map frame that allows you to see where you are currently at at a smaller zoom scale. You can interact with it as well. <br>"
-                div.innerHTML += "<br> <h7> On the top right is a layer control menu that lets you toggle between base maps and visualize NYC's green infrastructure efforts. Below that is <br>" +
-                    " a search function that allows you to look for a specfic NTA by name. <br>"
-                div.innerHTML += "<br><h7> On the bottom left is a legend that indicates the number of calls made by residents in that NTA per time period. To the right of this map are tables <br>" + 
-                    " of total flood calls, street trees, green infrastructure, and catch basins aggregated to the NTA, CDTA, and borough level.<br>"
-                div.innerHTML += "<br><h7> Click on the polygons and points for more information about their attributes. Otherwise, to exit from this info window, press X. To retrieve it, press X again.<br>"
+                div.innerHTML += "<h4 style='text-align:center'> Welcome: This is a map of NYC NTAs colorized by 311 calls made from 2010 - 2020 </h4> <br>";
+                div.innerHTML += "<h7 style='text-align:center'> On the top left are map controls that let you zoom in or zoom out (zoom level is shown between the + and -), or display the map at full screen. Below that<br>" +
+                    " is interactive mini map frame that allows you to see where you are currently at at a smaller zoom scale. You can toggle it on and off with the M key. <br>"
+                div.innerHTML += "<br> <h7 style='text-align:center'> On the top right is a layer control menu that lets you toggle between base maps and visualize NYC's green infrastructure efforts. You can toggle it on  <br>" +
+                    " and off with the L key. Below that is a search function that allows you to look for a specfic NTA by name. <br>"
+                div.innerHTML += "<br><h7 style='text-align:center'> On the bottom left is a legend that indicates the number of calls made by residents in that NTA per time period. To the right of this map are tables of total <br>" + 
+                    " flood calls, street trees, green infrastructure, and catch basins aggregated to the NTA, CDTA, and borough level.<br>"
+                div.innerHTML += "<br><h7 style='text-align:center'> Click on the polygons and points for more information about their attributes. Otherwise, you can toggle with this info window with the X key.<br>"
                 // div.innerHTML += "<br><h7>  <br>"
                 return div;
             }
@@ -721,6 +721,17 @@
                             lCDIVElem.style.display = "none";
                         } else {
                             lCDIVElem.style.display = "";
+                        }
+                    }
+                });
+
+            var mapDIVElem = miniMap.getContainer();
+                document.addEventListener("keydown", (e) => {
+                    if (e.key === 'm' | e.key === 'M') {
+                        if (mapDIVElem.style.display == "") {
+                            mapDIVElem.style.display = "none";
+                        } else {
+                            mapDIVElem.style.display = "";
                         }
                     }
                 });
