@@ -349,13 +349,13 @@
 
             info.onAdd = function () {
                 var div = L.DomUtil.create("div", "info");
-                div.innerHTML += "<h4> Welcome -- This is a map of NYC neighborhood tabulation areas colorized by 311 calls made from 2010 - 2020 </h4> <br>";
-                div.innerHTML += "<h7> On the top left are map controls that let you zoom in or zoom out (zoom level is shown between the + and -), or display the map at full screen. Below that is <br>" +
-                    " mini map frame that allows you to see where you are currently at at a smaller zoom scale. You can interact with it as well. <br>"
-                div.innerHTML += "<br> <h7> On the top right is a layer control menu that lets you toggle between base maps and visualize NYC's green infrastructure efforts. Below that is a search <br>" +
-                    " function that allows you to look for a specfic NTA by name. <br>"
-                div.innerHTML += "<br><h7> On the bottom left is a legend that indicates the number of calls made by residents in that NTA per time period. To the right of this map are tables of total flood <br>" + 
-                    " calls, street trees, green infrastructure, and catch basins aggregated to the NTA, CDTA, and borough level.<br>"
+                div.innerHTML += "<h4> Welcome: This is a map of NYC NTAs colorized by 311 calls made from 2010 - 2020 </h4> <br>";
+                div.innerHTML += "<h7> On the top left are map controls that let you zoom in or zoom out (zoom level is shown between the + and -), or display the map at full <br>" +
+                    " screen. Below that is mini map frame that allows you to see where you are currently at at a smaller zoom scale. You can interact with it as well. <br>"
+                div.innerHTML += "<br> <h7> On the top right is a layer control menu that lets you toggle between base maps and visualize NYC's green infrastructure efforts. Below that is <br>" +
+                    " a search function that allows you to look for a specfic NTA by name. <br>"
+                div.innerHTML += "<br><h7> On the bottom left is a legend that indicates the number of calls made by residents in that NTA per time period. To the right of this map are tables <br>" + 
+                    " of total flood calls, street trees, green infrastructure, and catch basins aggregated to the NTA, CDTA, and borough level.<br>"
                 div.innerHTML += "<br><h7> Click on the polygons and points for more information about their attributes. Otherwise, to exit from this info window, press X. To retrieve it, press X again.<br>"
                 // div.innerHTML += "<br><h7>  <br>"
                 return div;
@@ -710,7 +710,7 @@
                 "Wetland Trees": wtCluster,
             }
             
-            var miniMap = new L.Control.MiniMap(zoom, { position: "topleft", width: 340, height: 400, zoomLevelOffset: -3 }).addTo(map);
+            var miniMap = new L.Control.MiniMap(zoom, { position: "topleft", width: 300, height: 400, zoomLevelOffset: -3 }).addTo(map);
 
             var lC = L.control.layers(baseMaps, overlayMaps).addTo(map).expand();
 
