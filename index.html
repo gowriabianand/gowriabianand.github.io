@@ -230,31 +230,6 @@
                 iconSize: [20, 20], // size of the icon
             });
 
-            var treeIcon = L.Icon.extend({
-                options: {
-                iconUrl: "tree.png",
-                iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
-                popupAnchor: [3, 3], // point from which the popup should open relative to the iconAnchor
-                },
-            });
-
-            var smallTreeIcon = new treeIcon({
-                iconSize: [20, 20], // size of the icon
-            });
-
-            var grateIcon = L.Icon.extend({
-                options: {
-                iconUrl: "cb.png",
-                iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
-                popupAnchor: [3, 3], // point from which the popup should open relative to the iconAnchor
-                },
-            });
-
-            var smallGrateIcon = new grateIcon({
-                iconSize: [20, 20], // size of the icon
-            });
-
-
             function getColorTot(t) {
                 return t > 5960 ?
                     "#08306b":
@@ -665,22 +640,6 @@
                 chunkedLoading: true,
                 spiderLegPolylineOptions: {opacity: 0},
             });
-
-            // var cbCluster = L.markerClusterGroup({
-            //     spiderfyOnMaxZoom: true,
-            //     showCoverageOnHover: false,
-            //     zoomToBoundsOnClick: true,
-            //     chunkedLoading: true,
-            //     spiderLegPolylineOptions: {opacity: 0},
-            // });
-
-            var wtCluster = L.markerClusterGroup({
-                spiderfyOnMaxZoom: true,
-                showCoverageOnHover: false,
-                zoomToBoundsOnClick: true,
-                chunkedLoading: true,
-                spiderLegPolylineOptions: {opacity: 0},
-            });
                 
             //layer groups
 
@@ -712,8 +671,6 @@
                 "Stormwater Greenstreet": giCluster14,
                 "Structural Soil": giCluster17,
                 "Subsurface Pipe": giCluster19,
-                // "Catch Basins": cbCluster,
-                "Wetland Trees": wtCluster,
             }
             
             var miniMap = new L.Control.MiniMap(zoom, { position: "topleft", width: 340, height: 420, zoomLevelOffset: -3 }).addTo(map);
