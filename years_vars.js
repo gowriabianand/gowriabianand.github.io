@@ -13,7 +13,7 @@ function onEachFeature(feature, layer) {
 
     layer.on({
         click: function (e) { map.fitBounds(e.target.getBounds()) },
-        mouseover: function (e) { e.target.setStyle({ fillOpacity: 0.1}) },
+        mouseover: function (e) { e.target.setStyle({ fillOpacity: 0}) },
         mouseout: function (e) { e.target.setStyle({ fillOpacity:0.8}) }
     });
 }
