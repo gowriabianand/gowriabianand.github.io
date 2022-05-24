@@ -37,7 +37,6 @@ $.getJSON("ntafloodfin.geojson", function(data) {
         'properties.boroname',
         'properties.ntaname',
         'properties.total'
-        //'properties.operator'
         ]  
     }) 
 })
