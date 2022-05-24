@@ -40,23 +40,7 @@
         <script src="./Control.MiniMap.js" ></script>
         <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
 
-
-        <!-- <link rel="stylesheet" href="screen.css" />
-	
-        <link rel="stylesheet" href="../dist/MarkerCluster.css" />
-        <script src="../dist/leaflet.markercluster-src.js"></script>   -->
-
         <style>
-            /* star applies style to every element */
-        /*
-        * {
-            height: 100%;
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            border: 0;
-        }
-        */
 
         body {
             height: 100%;
@@ -110,21 +94,7 @@
             opacity: 0.7;
         }
 
-        .leaflet-verticalcenter {
-            position: absolute;
-            z-index: 1000;
-            pointer-events: none;
-            top: 50%; /* possible because the placeholder's parent is the map */
-            transform: translateY(-50%); /* using the CSS3 Transform technique */
-            padding-top: 10px;
-        }
-
-        .leaflet-verticalcenter .leaflet-control {
-            margin-bottom: 10px;
-        }
-
         .pageRightMenu {
-            /* background-color: mediumpurple; */
             float: right;
             clear: none;
             overflow: auto;
@@ -157,14 +127,12 @@
                 <button class="w3-button w3-hover-grey w3-round w3-blue" style="width:8%" id="2018">2018</button>
                 <button class="w3-button w3-hover-grey w3-round w3-blue" style="width:8%" id="2019">2019</button>
                 <button class="w3-button w3-hover-grey w3-round w3-blue" style="width:8%" id="2020">2020</button>
-                <!-- <div class="w3-right-align" style="width:10%"><p>Right aligned text.</p></div> -->
             </div>
             <div class="pageContent w3-sand">
                 <div id = "map"></div>
             </div>
             <div class="w3-container w3-sand w3-right" style="width:25%">
                 <iframe width="430" height="800" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=18BD14BEACA07E80%211474&authkey=%21AOar-DSwLyj7v60&em=2&AllowTyping=True&ActiveCell='NTA'!C1&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edesNext=false&ejss=false"></iframe>            <!-- <div class="w3-hover-green w3-hover-shadow w3-round w3-left" style="width:30%">
-                <p>Hover over me!</p> -->
               </div> 
             <div class="w3-container w3-sand w3-text-purple" style ="width:100%">
                 <p class = "w3-small"> &copy; Gowri Anand 2022</p></div>
@@ -206,9 +174,6 @@
             var zoom = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
                 maxZoom: 20,
                 attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012',
-                // id: 'mapbox/light-v9',
-                // tileSize: 512,
-                // zoomOffset: -1
             })
 
             let baseLayer1 = L.tileLayer.provider("Esri.WorldImagery");
@@ -341,7 +306,6 @@
                 div.innerHTML += "<br><h7 style='text-align:center'> On the bottom left is a legend that indicates the number of calls made by residents in that NTA per time period. To the right of this map are tables of total <br>" + 
                     " flood calls, street trees, green infrastructure, and catch basins aggregated to the NTA, CDTA, and borough level.<br>"
                 div.innerHTML += "<br><h7 style='text-align:center'> Click on the polygons and points for more information about their attributes. Otherwise, you can toggle with this info window with the X key.<br>"
-                // div.innerHTML += "<br><h7>  <br>"
                 return div;
             }
 
@@ -458,30 +422,6 @@
                 nyc2020.addTo(map);
                 currentLegend = nycLegend;
                 nycLegend.addTo(map);
-            });
-
-            L.Control.Layers.include({
-                getOverlays: function() {
-                    // create hash to hold all layers
-                    var control, layers;
-                    layers = {};
-                    control = this;
-
-                    // loop thru all layers in control
-                    control._layers.forEach(function(obj) {
-                    var layerName;
-
-                    // check if layer is an overlay
-                    if (obj.overlay) {
-                        // get name of overlay
-                        layerName = obj.name;
-                        // store whether it's present on the map or not
-                        return layers[layerName] = control._map.hasLayer(obj.layer);
-                    }
-                    });
-
-                    return layers;
-                }
             });
 
             var giCluster = L.markerClusterGroup({
@@ -690,8 +630,6 @@
                 "Stormwater Greenstreet": giCluster14,
                 "Structural Soil": giCluster17,
                 "Subsurface Pipe": giCluster19,
-                // "Catch Basins": cbCluster,
-                // "Wetland Trees": wtCluster,
             }
             
             var miniMap = new L.Control.MiniMap(zoom, { position: "topleft", width: 300, height: 360, zoomLevelOffset: -3 }).addTo(map);
