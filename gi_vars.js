@@ -24,41 +24,6 @@ function onEachFeaturePointwt(feature, layer) {
     layer.bindPopup(popupContent);
 }
 
-var wt = L.geoJSON(null, {
-    style: function (feature) {
-    return feature.properties && feature.properties.style;
-},
-    onEachFeature: onEachFeaturePointwt,
-    pointToLayer: function (feature, latlng) {
-        return L.marker(latlng, { icon: smallTreeIcon })}});
-
-$.getJSON("./wetlandtrees.geojson", function (data) {
-    // Do NOT create the GeoJSON layer here.
-    // Create it outside and then fill the data
-    wt.addData(data);
-
-    wtCluster.addLayers(wt.getLayers());
-
-    wt.remove();
-});
-
-// var cb = L.geoJSON(null, {
-//     style: function (feature) {
-//     return feature.properties && feature.properties.style;
-// },
-//     pointToLayer: function (feature, latlng) {
-//         return L.marker(latlng, { icon: smallGrateIcon })}});
-
-// $.getJSON("./catchbasins.geojson", function (data) {
-//     // Do NOT create the GeoJSON layer here.
-//     // Create it outside and then fill the data
-//     cb.addData(data);
-
-//     cbCluster.addLayers(cb.getLayers());
-
-//     cb.remove();
-// });
-
 var allgi = L.geoJSON(null, {
     style: function (feature) {
     return feature.properties && feature.properties.style;
